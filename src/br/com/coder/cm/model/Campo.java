@@ -128,11 +128,9 @@ public class Campo {
 	}
 	
 	void restart() {
-		
 		this.open = false;
 		this.marked = false;
 		this.undermined = false; 
-		
 	}
 	
 	public String toString() {

@@ -12,8 +12,6 @@ public class Tabuleiro {
 	
 	private final List<Campo> campos = new ArrayList<>();
 	
-	
-	
 	public Tabuleiro(int lines, int columns, int minas) {
 		this.lines = lines;
 		this.columns = columns;
@@ -25,31 +23,16 @@ public class Tabuleiro {
 		raffleMines();
 	}
 
-
-
 	private void raffleMines() {
 		int mines = 0;
-		
-		
 		do {
-			
-			
 			Predicate<Campo> minado = c -> c.isUndermined();
-			
 			mines = (int) this.campos.stream().filter(minado).count();	
-			
 			int random = (int) (Math.random() * this.campos.size());
-			
 			campos.get(random).minar();
-			
-			
-			
 		} while(mines < this.minas);
-		
-		
+	
 	}
-
-
 
 	private void associateNeighbor() {
 		for(Campo  c1 : campos) {
@@ -60,20 +43,14 @@ public class Tabuleiro {
 		
 	}
 
-
-
 	private void generateCampos() {
 		for (int line = 0; line < this.lines; line++) {
 			for (int column = 0; column < this.columns; columns++) {
 				campos.add(new Campo(line, column));
-				
 			}
-			
 		}
-		
 	}
-	
-	
+
 	public boolean goalAchieved() {
 		return this.campos.stream().allMatch(c -> c.goalAchieved());
 	}
