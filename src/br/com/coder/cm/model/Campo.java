@@ -10,13 +10,9 @@ public class Campo {
 	private int line;
 	private int column;
 	
-	
 	private boolean open = false;
 	private boolean undermined = false;
 	private boolean marked = false;
-	
-	
-	
 	private List<Campo> neighbors =  new ArrayList();
 	
 	public Campo(int line, int column) {
@@ -42,8 +38,6 @@ public class Campo {
 			
 			return true;
 		} 
-		
-		
 		return false;
 	}
 	
@@ -55,16 +49,12 @@ public class Campo {
 	}
 	
 	public boolean openCampo() {
-		
 		if(!open && !marked) {
-			
 			this.open = true;
-			
 			
 			if(undermined) {
 				throw new ExplosionException();
 			}
-			
 			if(neighborhoodSecurity()) {
 				neighbors.forEach(t -> {
 					System.out.println(t);
@@ -72,14 +62,12 @@ public class Campo {
 				});
 			}
 			
-			
 			return true;
 		}
 		
 		return false;
 		
 	}
-	
 	
 	public int getLine() {
 		return line;
@@ -97,7 +85,6 @@ public class Campo {
 		return this.undermined;
 	}
 	
-
 	boolean neighborhoodSecurity() {
 		return neighbors.stream().noneMatch(v -> v.undermined);
 	}
@@ -134,11 +121,9 @@ public class Campo {
 	}
 	
 	public String toString() {
-		
 		if(this.marked) {
 			return "X";
 		}
-		
 		else if(this.open && this.undermined) {
 			return "*";
 		}

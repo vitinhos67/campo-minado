@@ -9,7 +9,6 @@ public class Tabuleiro {
 	private int lines;
 	private int columns;
 	private int minas;
-	
 	private final List<Campo> campos = new ArrayList<>();
 	
 	public Tabuleiro(int lines, int columns, int minas) {
@@ -54,7 +53,6 @@ public class Tabuleiro {
 	public boolean goalAchieved() {
 		return this.campos.stream().allMatch(c -> c.goalAchieved());
 	}
-	
 	
 	public void restart() {
 		campos.stream().forEach(c -> c.restart());
